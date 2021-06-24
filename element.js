@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-05-31 19:48:25
  * @LastEditors: LemoFire
- * @LastEditTime: 2021-06-21 14:18:42
+ * @LastEditTime: 2021-06-21 17:35:07
  */
 
 // el-tree
@@ -48,9 +48,9 @@ export const fileUploadCheck = (file, allowExtType, size) => {
 // el-checkbox
 /**
  * @description: 多选框反选，反选选项需要在第一位
- * @param {*} arr
+ * @param {array} arr
  * @param {*} keyword
- * @return {*}
+ * @return {array | false}
  */
 export const inverse = (arr, keyword) => {
   arr.indexOf(keyword) != -1 && arr.length > 1

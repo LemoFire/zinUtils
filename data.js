@@ -1,16 +1,16 @@
 /*
  * @Date: 2021-05-31 19:49:02
  * @LastEditors: LemoFire
- * @LastEditTime: 2021-06-21 12:51:17
+ * @LastEditTime: 2021-06-21 17:37:05
  */
 
 import { isNull } from "./checker";
 
 /**
  * @description: 取整
- * @param {*} content 要转换的数据，可以是String
- * @param {number} type 1:parseInt 2:向上取整 3:向下取整
- * @return {*} number，type选错返回false
+ * @param {number | string} content 要转换的数据
+ * @param {number} type 1: parseInt 2: 向上取整 3: 向下取整
+ * @return {number | false} number，type选错返回false
  */
 export const letInt = (content, type = 1) => {
   switch (type) {
@@ -30,7 +30,7 @@ export const letInt = (content, type = 1) => {
 
 /**
  * @description: 字符串长度限制
- * @param {string} content String类型
+ * @param {string} content 要处理的数据
  * @param {number} length 要限制的字符串长度
  * @return {*} 处理后的content，不符合条件原样返回
  */
@@ -65,10 +65,10 @@ export const phoneTrim = (content) => {
 
 /**
  * @description: 字符串连接
- * @param {*} testBuffer 待连接对象，Array || Object || String
+ * @param {array | object | string} testBuffer 待连接对象
  * @param {string} str
  * @param {number} mode 1: str+字段 2: 字段+str
- * @return {*} output ,传入为空返回null, 其他情况返回false
+ * @return {array | object | string | null | false} output ,传入为空返回null, 其他情况返回false
  */
 export const stringLink = (testBuffer, str, mode = 1) => {
   let output;
@@ -133,8 +133,7 @@ export const isObject = (checkBuffer, includeArray = false) => {
 /**
  * @description: 深度遍历，检查到对象或者数组则执行函数
  * @param {*} checkBuffer
- * @param {*} fun 待执行待函数
- * @return {*}
+ * @param {Function} fun 待执行待函数
  */
 export const depthTraversal = (checkBuffer, fun) => {
   if (isObject(checkBuffer, true)) {

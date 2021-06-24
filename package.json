@@ -1,0 +1,19 @@
+{
+  "name": "zinutils",
+  "version": "0.0.7",
+  "description": "test ver",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LemoFire/zinUtils.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LemoFire/zinUtils/issues"
+  },
+  "homepage": "https://github.com/LemoFire/zinUtils#readme"
+}
