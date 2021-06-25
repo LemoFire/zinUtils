@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-06-17 15:48:52
  * @LastEditors: LemoFire
- * @LastEditTime: 2021-06-24 20:21:56
+ * @LastEditTime: 2021-06-25 17:23:28
  */
 
 /**
@@ -21,6 +21,15 @@ const log = (() => {
 })();
 
 /**
+ * @description: 开发环境输出警告
+ */
+const logWarn = (() => {
+  if (isDevelopment) {
+    return console.warn;
+  } else return () => {};
+})();
+
+/**
  * @description: 开发环境输出错误
  */
 const logError = (() => {
@@ -28,10 +37,10 @@ const logError = (() => {
     return console.error;
   } else return () => {};
 })();
-
 const dev = {
   log,
   logError,
+  logWarn,
   isDevelopment,
 };
 
