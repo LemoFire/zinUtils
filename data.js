@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-05-31 19:49:02
  * @LastEditors: LemoFire
- * @LastEditTime: 2021-06-21 17:37:05
+ * @LastEditTime: 2021-07-07 16:48:37
  */
 
 import { isNull } from "./checker";
@@ -16,13 +16,10 @@ export const letInt = (content, type = 1) => {
   switch (type) {
     case 1:
       return parseInt(content);
-      break;
     case 2:
       return Math.ceil(content);
-      break;
     case 3:
       return Math.floor(content);
-      break;
     default:
       return false;
   }
