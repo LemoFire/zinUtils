@@ -1,16 +1,18 @@
 /*
  * @Date: 2021-06-21 11:51:53
  * @LastEditors: LemoFire
- * @LastEditTime: 2021-06-21 17:18:35
+ * @LastEditTime: 2021-07-08 11:44:55
  */
 
 /**
  * @description: 非空检查
- * @param {*} content
- * @return {boolean}
+ * @param {array | object | string} content
+ * @return {boolean} 空返回 true
  */
-export const isNull = (content) => {
+export const isNull = content => {
   if (Array.isArray(content) && content.length == 0) {
+    return true;
+  } else if (typeof content == "object" && Object.keys(content).length == 0) {
     return true;
   }
   if (content == "" || content == undefined || content == null) {
@@ -20,8 +22,8 @@ export const isNull = (content) => {
 };
 
 /**
- * @description: 检查对象内的内容是否为空，当检查的是对象时可使用函数生成器返回为空的 Key
- * @param {array | object}} testBuffer 待测试数据
+ * @description: 检查对象内的内容是否为空，当检查的是对象时可使用函数生成器返回为空的 Key。适用于表单提交时的非空检查。
+ * @param {array | object} testBuffer 待测试数据
  * @param {boolean} useGenerator 使用函数生成器
  * @return {boolean} 有空则返回false 无空返回true;使用函数生成器时，使用checkNull().next()可获取空值的 Key
  * @example 
@@ -48,7 +50,7 @@ export const isNull = (content) => {
  */
 export function* checkNull(testBuffer, useGenerator = false) {
   if (Array.isArray(testBuffer)) {
-    testBuffer.map((item) => {
+    testBuffer.map(item => {
       if (isNull(item)) {
         return false;
       }
