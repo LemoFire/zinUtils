@@ -11,12 +11,12 @@ npm install zinutils
 ### Vue
 main.js
 ```
-// Init window.znConfig
+// Init window.znConf
 import "zinutils/init/vite";        <- vite use this
 import "zinutils/init/webpack";     <- vue/cli use this
 
 // Bind to global
-import { vue3 as zinUtils } from "zinutils/init";     // or import vue2 (no test)
+import { vue3 as zinUtils } from "zinutils/init";     // or import vue2
 App.use(zinUtils)
 ```
 *You can also introduce it in a non-vue environment（see On-demand introduction）*
@@ -27,12 +27,20 @@ App.use(zinUtils)
 this.$dev.log("Global binding")
 ```
 ## On-demand introduction
-### Init window.znConfig in main.js (Optional)
+### Load window.znConf in main.js (Optional)
 ```
 import "zinutils/init/vite";         <- vite use this
 import "zinutils/init/webpack";      <- vue/cli use this
-import "zinutils/init";              <- others use this (window.znConfig.isDevelopment will always be set to true)
+import "zinutils/init";              <- others use this (window.znConf.isDevelopment will always be set to true)
 ```
+#### window.znConf
+| Variable name | Description                                                |  type   |  Default  |
+| ------------- | ---------------------------------------------------------- | :-----: | :-------: |
+| isDevelopment | It will only take effect after the configuration is loaded | Boolean |   true    |
+| isIOS         | -                                                          | Boolean | undefined |
+| isIPad        | -                                                          | Boolean | undefined |
+| isAndroid     | -                                                          | Boolean | undefined |
+| isPC          | -                                                          | Boolean | undefined |
 
 ### Usage
 ```
