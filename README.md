@@ -1,133 +1,157 @@
-# znUtils
+# zinUtils
 
 ## Quickstart
-
+### Installation
 ```
 npm install zinutils
 ```
-
-## Vue global binding way
-
-### Vue
-main.js
-```
-// Init window.znConf
-import "zinutils/init/vite";        <- vite use this
-import "zinutils/init/webpack";     <- vue/cli use this
-
-// Bind to global
-import { vue3 as zinUtils } from "zinutils/init";     // or import vue2
-App.use(zinUtils)
-```
-*You can also introduce it in a non-vue environment（see On-demand introduction）*
-
-### Usage
-
-```
-this.$dev.log("Global binding")
-```
-## On-demand introduction
-### Load window.znConf in main.js (Optional)
-```
-import "zinutils/init/vite";         <- vite use this
-import "zinutils/init/webpack";      <- vue/cli use this
-import "zinutils/init";              <- others use this (window.znConf.isDevelopment will always be set to true)
-```
-#### window.znConf
-| Variable name | Description                                                |  type   |  Default  |
-| ------------- | ---------------------------------------------------------- | :-----: | :-------: |
-| isDevelopment | It will only take effect after the configuration is loaded | Boolean |   true    |
-| isIOS         | -                                                          | Boolean | undefined |
-| isIPad        | -                                                          | Boolean | undefined |
-| isAndroid     | -                                                          | Boolean | undefined |
-| isPC          | -                                                          | Boolean | undefined |
-
-### Usage
-```
+```javascript
 import { [MODUELs] } from "zintuils"
 
 [MODUELs].Function()
 ```
 
+### Initial configuration
+*(Optional, but not entirely optional, still initialized XD)*
+```javascript
+// main.js
+
+// For vite
+import "zinutils/init/vite";
+// For vue/cli
+import "zinutils/init/webpack";
+// Other (or not import, window.znConf.isDevelopment will default to true)
+import "zinutils/init";
+```
+*window.znConf*
+| Variable name | Description        |  type   |  Default  |
+| ------------- | ------------------ | :-----: | :-------: |
+| isDevelopment | Lazy to explain :D | Boolean |   true    |
+| isIOS         | Lazy to explain :D | Boolean | undefined |
+| isIPad        | Lazy to explain :D | Boolean | undefined |
+| isAndroid     | Lazy to explain :D | Boolean | undefined |
+| isPC          | Lazy to explain :D | Boolean | undefined |
+
+
+### Global binding for vue
+```javascript
+// main.js
+
+// Vue 3
+import { vue3 as zinUtils } from "zinutils/init";
+// Vue 2
+import { vue3 as zinUtils } from "zinutils/init";
+
+App.use(zinUtils)
+```
+
+#### Usage
+
+```javascript
+this.$dev.log("Good day")
+```
+
 ## Module
-
-### mobile
-##### Import
-```
-import { mobile } from "zintuils"
-```
-###### main.js import
-When imported in main.js, disableZoom function will be automatically loaded
-```
-import "zintuils/mobile";
-```
-
-##### Function
-
-| Function name | Description                                  | Parameter |            Description            |  type  |
-| ------------- | -------------------------------------------- | :-------: | :-------------------------------: | :----: |
-| disableZoom   | Disable mobile zooming via meta tag          |     -     |                 -                 | String |
-| inputRec      | Fix the rebound error of input box under IOS |  inputEl  |           input element           | String |
-| inputsRec     | Fix the rebound error of input box under IOS |  wrapEl   | Parent element of multiple inputs | String |
-
-
-### dev
-##### Import
-```
-import "zinutils/init/vite";  // Load it in main.js
-// or use `import "zinutils/init/webpack"`;
-
-import { dev } from "zintuils"
+Contents
+- [common](#common)
+- [check](#check)
+- [time](#time)
+- [filter](#filter)
+- [encrypt](#encrypt)
+- [auth](#auth)
+- [mobile](#mobile)
+- [dev](#dev)
+### common
+```javascript
+import { common } from "zintuils"
 ```
 ##### Function
-| Function name | Description                                                | Parameter | Description | type  |
-| ------------- | ---------------------------------------------------------- | :-------: | :---------: | :---: |
-| log           | console.log() // log only in the development environment   |     -     |      -      |   -   |
-| logError      | console.error() // log only in the development environment |     -     |      -      |   -   |
-| logWarn       | console.warn() // log only in the development environment  |     -     |      -      |   -   |
+| Function name | Description                                     |  Parameter  |    Description     | type  | return |
+| ------------- | ----------------------------------------------- | :---------: | :----------------: | :---: | :----: |
+| debounce      | [see here](https://www.baidu.com/s?wd=debounce) | func, delay | Lazy to explain :D |   -   | Guess  |
 
+### check
+```javascript
+import { check } from "zintuils"
+```
+##### Function
+| Function name | Description                 |             Parameter             |   Description    |        type         | return  |
+| ------------- | --------------------------- | :-------------------------------: | :--------------: | :-----------------: | :-----: |
+| isNull        | Is null                     |              content              |        -         | Array/Object/String | Boolean |
+| hasNull       | Obj/arr's sub item has null | testBuffer, useGenerator = false  | Look source code |    Array/Object     | Boolean |
+| isObject      | isObject                    | checkBuffer, includeArray = false |        -         |         Any         | Boolean |
+| isPhone       | Is phone number             |               phone               |        -         |          -          | Boolean |
+
+### time
+```javascript
+import { time } from "zintuils"
+```
+##### Function
+| Function name | Description                                 | Parameter | Description | type  | return |
+| ------------- | ------------------------------------------- | :-------: | :---------: | :---: | :----: |
+| sleep         | Like python's time.sleep, need to use await |    ms     |      -      |   -   |  Void  |
+
+### filter
+```javascript
+import { filter } from "zintuils"
+```
+##### Function
+| Function name | Description                                          |    Parameter    |        Description        |  type  | return |
+| ------------- | ---------------------------------------------------- | :-------------: | :-----------------------: | :----: | :----: |
+| limitLen      | Length limit                                         | content, length | Content and target length | String | String |
+| parseNum      | Remove other characters except numbers in the string |     content     |             -             | String | String |
 
 ### encrypt
-##### Import
-```
+```javascript
 import { encrypt } from "zintuils"
 ```
 #### encrypt.md5 (See [md5.js](http://pajhome.org.uk/crypt/md5) for more info.)
 ##### Function
-| Function name | Description | Parameter | Description | type  |
-| ------------- | ----------- | :-------: | :---------: | :---: |
-| hex           | hex_md5     |     s     |      -      |   -   |
-| base64        | b64_md5     |     s     |      -      |   -   |
-| any           | any_md5     |    s,e    |      -      |   -   |
+| Function name | Description | Parameter |    Description     | type  | return |
+| ------------- | ----------- | :-------: | :----------------: | :---: | :----: |
+| hex           | hex_md5     |     s     | Lazy to explain :D |   -   | String |
+| base64        | b64_md5     |     s     | Lazy to explain :D |   -   | String |
+| any           | any_md5     |    s,e    | Lazy to explain :D |   -   | String |
 
 #### encrypt.hmacmd5 (See [md5.js](http://pajhome.org.uk/crypt/md5) for more info.)
 ##### Function
-| Function name | Description  | Parameter | Description | type  |
-| ------------- | ------------ | :-------: | :---------: | :---: |
-| hex           | hex_hmac_md5 |    k,d    |      -      |   -   |
-| base64        | b64_hmac_md5 |    k,d    |      -      |   -   |
-| any           | any_hmac_md5 |   k,d,e   |      -      |   -   |
+| Function name | Description  | Parameter |    Description     | type  | return |
+| ------------- | ------------ | :-------: | :----------------: | :---: | :----: |
+| hex           | hex_hmac_md5 |    k,d    | Lazy to explain :D |   -   | String |
+| base64        | b64_hmac_md5 |    k,d    | Lazy to explain :D |   -   | String |
+| any           | any_hmac_md5 |   k,d,e   | Lazy to explain :D |   -   | String |
 
 ### auth
-##### Import
-```
+```javascript
 import { auth } from "zintuils"
 ```
 ##### Function
-| Function name  | Description                          | Parameter | Description | type  |
-| -------------- | ------------------------------------ | :-------: | :---------: | :---: |
-| getFingerPrint | Get browser fingerprint (not unique) |     -     |      -      |   -   |
+| Function name  | Description                          | Parameter | Description | type  | return |
+| -------------- | ------------------------------------ | :-------: | :---------: | :---: | :----: |
+| getFingerPrint | Get browser fingerprint (not unique) |     -     |      -      |   -   | String |
 
+### mobile
+```javascript
+import { mobile } from "zintuils"
 
+// You can also import it directly into main.js, It will automatically execute some functions (Now only disableZoom)
+import "zintuils/mobile";
+```
+#### Function
+| Function name | Description                                  | Parameter |            Description            |  type  | return |
+| ------------- | -------------------------------------------- | :-------: | :-------------------------------: | :----: | :----: |
+| disableZoom   | Disable mobile zooming via meta tag          |     -     |                 -                 |   -    |  Void  |
+| inputRec      | Fix the rebound error of input box under IOS |  inputEl  |           input element           | String |  Void  |
+| inputsRec     | Fix the rebound error of input box under IOS |  wrapEl   | Parent element of multiple inputs | String |  Void  |
 
-### checker
-*README undone*
-
-### data
-*README undone*
-
-### element
-*README undone*
-
-### common
-*README undone*
+### dev
+*Need to [initialize configuration](#initial-configuration)*
+```javascript
+import { dev } from "zintuils"
+```
+##### Function
+| Function name | Description                             | Parameter | Description | type  |    return     |
+| ------------- | --------------------------------------- | :-------: | :---------: | :---: | :-----------: |
+| log           | Output log in development environment   |     -     |      -      |   -   |  console.log  |
+| logError      | Output error in development environment |     -     |      -      |   -   | console.error |
+| logWarn       | Output warn in development environment  |     -     |      -      |   -   | console.warn  |
