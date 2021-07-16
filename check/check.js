@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-06-21 11:51:53
  * @LastEditors: LemoFire
- * @LastEditTime: 2021-07-15 11:38:47
+ * @LastEditTime: 2021-07-16 09:53:59
  */
 
 /**
@@ -25,56 +25,44 @@ const isNull = content => {
  * @description: 检查对象内的内容是否有空，当检查的是对象时可使用函数生成器返回为空的 Key。适用于表单提交时的非空检查。
  * @param {array | object} testBuffer 待测试数据
  * @param {boolean} useGenerator 使用函数生成器
- * @return {boolean} 有空则返回false 无空返回true;使用函数生成器时，使用checkNull().next()可获取空值的 Key
+ * @return {boolean} 有空则返回true 无空返回false;使用函数生成器时，使用hasNull().next()可获取空值的 Key
  * @example 
-    let checkBuffer = {
-        workOrderTitle: workOrderTitle.value,
-        content: content.value,
-        startTime: effectiveTime.value[0],
-        endTime: effectiveTime.value[1],
-    };
-    const ckDic = {
-        workOrderTitle: "工单标题",
-        content: "内容",
-        startTime: "开始时间",
-        endTime: "结束时间",
-    };
-    const ck = hasNull(checkBuffer, true);
-    if (!ck.next().value) {
-    context.parent.$message({
-        message: ckDic[ck.next().value] + "不能为空",
-        type: "warning",
-    });
-    return false;
+    const hasNull = check.hasNull(
+      { phone: phone.value, imgCode: imgCode.value },
+      true
+    );
+    if (hasNull.next().value) {
+      emit("hasNull", hasNull.next().value);
+      return;
     }
  */
 function* hasNull(testBuffer, useGenerator = false) {
   if (Array.isArray(testBuffer)) {
     testBuffer.map(item => {
       if (isNull(item)) {
-        return false;
+        return true;
       }
     });
   } else if (typeof testBuffer == "object") {
     if (testBuffer === null) {
-      return false;
+      return true;
     }
     for (let key in testBuffer) {
       if (isNull(testBuffer[key])) {
         if (useGenerator) {
-          yield false;
+          yield true;
           return key;
         } else {
-          return false;
+          return true;
         }
       }
     }
   } else if (typeof testBuffer === "string") {
-    return !isNull(testBuffer);
+    return isNull(testBuffer);
   } else {
-    return false;
+    return true;
   }
-  return true;
+  return false;
 }
 
 /**
