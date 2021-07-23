@@ -1,33 +1,33 @@
 /*
  * @Date: 2021-07-07 14:19:26
  * @LastEditors: LemoFire
- * @LastEditTime: 2021-07-07 17:07:55
+ * @LastEditTime: 2021-07-23 15:09:42
  */
 /**
  * @description: 开发环境输出日志
  */
-const log = (() => {
+const log = (...vars) => {
   if (window.znConf.isDevelopment) {
-    return console.log;
-  } else return () => {};
-})();
+    console.log(...vars);
+  }
+};
 
 /**
  * @description: 开发环境输出警告
  */
-const logWarn = (() => {
+const logWarn = (...vars) => {
   if (window.znConf.isDevelopment) {
-    return console.warn;
-  } else return () => {};
-})();
+    console.warn(...vars);
+  }
+};
 
 /**
  * @description: 开发环境输出错误
  */
-const logError = (() => {
+const logError = (...vars) => {
   if (window.znConf.isDevelopment) {
-    return console.error;
-  } else return () => {};
-})();
+    console.error(...vars);
+  }
+};
 
 export { log, logWarn, logError };
