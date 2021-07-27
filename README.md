@@ -78,9 +78,10 @@ import { common } from "zinutils";
 
 ##### Function
 
-| Function name | Description                                     |  Parameter  |    Description     | type | return |
-| ------------- | ----------------------------------------------- | :---------: | :----------------: | :--: | :----: |
-| debounce      | [see here](https://www.baidu.com/s?wd=debounce) | func, delay | Lazy to explain :D |  -   | Guess  |
+| Function name | Description                                     |  Parameter  |    Description     |  type  |   return    |
+| ------------- | ----------------------------------------------- | :---------: | :----------------: | :----: | :---------: |
+| debounce      | [see here](https://www.baidu.com/s?wd=debounce) | func, delay | Lazy to explain :D |   -    |    Guess    |
+| getParam      | Get a url parameter                             |  paramName  | Lazy to explain :D | String | String/null |
 
 ### check
 
@@ -187,8 +188,8 @@ import { dev } from "zinutils";
 
 ##### Function
 
-| Function name | Description                             | Parameter | Description | type |    return     |
-| ------------- | --------------------------------------- | :-------: | :---------: | :--: | :-----------: |
-| log           | Output log in development environment   |     -     |      -      |  -   |  console.log  |
-| logError      | Output error in development environment |     -     |      -      |  -   | console.error |
-| logWarn       | Output warn in development environment  |     -     |      -      |  -   | console.warn  |
+| Function name | Description                             | Parameter | Description | type | return |
+| ------------- | --------------------------------------- | :-------: | :---------: | :--: | :----: |
+| log           | Output log in development environment   |     -     |      -      |  -   |   -    |
+| logError      | Output error in development environment |     -     |      -      |  -   |   -    |
+| logWarn       | Output warn in development environment  |     -     |      -      |  -   |   -    |
