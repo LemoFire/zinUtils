@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-06 18:03:30
  * @LastEditors: LemoFire
- * @LastEditTime: 2021-07-07 17:58:50
+ * @LastEditTime: 2021-08-05 13:49:40
  */
 
 /**
@@ -14,6 +14,22 @@ const disableZoom = () => {
   metaViewport.setAttribute(
     "content",
     "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no"
+  );
+};
+
+/**
+ * @description: 禁用多余的拖动操作
+ */
+const disableDrag = () => {
+  document.body.addEventListener(
+    "touchmove",
+    function(e) {
+      if (e._isScroller) return;
+      e.preventDefault();
+    },
+    {
+      passive: false
+    }
   );
 };
 
@@ -50,4 +66,4 @@ const inputsRec = wrapEl => {
   }
 };
 
-export { disableZoom, inputRec, inputsRec };
+export { disableZoom, disableDrag, inputRec, inputsRec };

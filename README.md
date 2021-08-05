@@ -175,6 +175,7 @@ import "zinutils/mobile";
 | Function name | Description                                  | Parameter |            Description            |  type  | return |
 | ------------- | -------------------------------------------- | :-------: | :-------------------------------: | :----: | :----: |
 | disableZoom   | Disable mobile zooming via meta tag          |     -     |                 -                 |   -    |  Void  |
+| disableDrag   | Disable mobile edge drag                     |     -     |                 -                 |   -    |  Void  |
 | inputRec      | Fix the rebound error of input box under IOS |  inputEl  |           input element           | String |  Void  |
 | inputsRec     | Fix the rebound error of input box under IOS |  wrapEl   | Parent element of multiple inputs | String |  Void  |
 

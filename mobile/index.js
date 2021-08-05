@@ -1,14 +1,15 @@
 /*
  * @Date: 2021-07-07 17:56:12
  * @LastEditors: LemoFire
- * @LastEditTime: 2021-07-07 17:57:27
+ * @LastEditTime: 2021-08-05 13:46:33
  */
-import { disableZoom, inputRec, inputsRec } from "./mobile";
+import { disableZoom, disableDrag, inputRec, inputsRec } from "./mobile";
 
 disableZoom();
 
 const mobile = {
   disableZoom,
+  disableDrag,
   inputRec,
   inputsRec
 };
