@@ -1,6 +1,6 @@
 {
   "name": "zinutils",
-  "version": "0.0.39",
+  "version": "0.0.41",
   "description": "Common js toolbox",
   "main": "index.js",
   "scripts": {

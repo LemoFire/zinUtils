@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-07-06 18:03:30
  * @LastEditors: LemoFire
- * @LastEditTime: 2021-08-05 13:49:40
+ * @LastEditTime: 2021-08-12 14:27:23
  */
 
 /**
@@ -17,20 +17,24 @@ const disableZoom = () => {
   );
 };
 
+const preventElasticScrolling = (e) => {
+  if (e._isScroller) return;
+  e.preventDefault();
+};
+
 /**
- * @description: 禁用多余的拖动操作
+ * @description: 禁用IOS回弹效果
  */
-const disableDrag = () => {
-  document.body.addEventListener(
-    "touchmove",
-    function(e) {
-      if (e._isScroller) return;
-      e.preventDefault();
-    },
-    {
-      passive: false
-    }
-  );
+const disableElasticScrolling = () => {
+  document.body.addEventListener("touchmove", preventElasticScrolling, {
+    passive: false,
+  });
+};
+/**
+ * @description: 启用IOS回弹效果
+ */
+const enableElasticScrolling = () => {
+  document.body.removeEventListener("touchmove", preventElasticScrolling);
 };
 
 /**
@@ -38,7 +42,7 @@ const disableDrag = () => {
  * @param {string} inputEl 要操作输入框的CSS选择器
  * @example inputsRec("#input")
  */
-const inputRec = inputEl => {
+const inputRec = (inputEl) => {
   if (window.znConf.isIOS) {
     const inputs = document.querySelector(inputEl);
     for (let i = 0; i < inputs.length; i++) {
@@ -54,7 +58,7 @@ const inputRec = inputEl => {
  * @param {string} wrapEl 要操作输入框父元素的CSS选择器，将监听该元素下所有的input元素
  * @example inputsRec("#input-warp")
  */
-const inputsRec = wrapEl => {
+const inputsRec = (wrapEl) => {
   if (window.znConf.window.znConf.isIOS) {
     const wrap = document.querySelector(wrapEl);
     const inputs = wrap.querySelectorAll("input");
@@ -66,4 +70,10 @@ const inputsRec = wrapEl => {
   }
 };
 
-export { disableZoom, disableDrag, inputRec, inputsRec };
+export {
+  disableZoom,
+  disableElasticScrolling,
+  enableElasticScrolling,
+  inputRec,
+  inputsRec,
+};

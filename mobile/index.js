@@ -1,17 +1,24 @@
 /*
  * @Date: 2021-07-07 17:56:12
  * @LastEditors: LemoFire
- * @LastEditTime: 2021-08-05 13:46:33
+ * @LastEditTime: 2021-08-12 14:23:12
  */
-import { disableZoom, disableDrag, inputRec, inputsRec } from "./mobile";
+import {
+  disableZoom,
+  disableElasticScrolling,
+  enableElasticScrolling,
+  inputRec,
+  inputsRec,
+} from "./mobile";
 
 disableZoom();
 
 const mobile = {
   disableZoom,
-  disableDrag,
+  disableElasticScrolling,
+  enableElasticScrolling,
   inputRec,
-  inputsRec
+  inputsRec,
 };
 
 export default mobile;
