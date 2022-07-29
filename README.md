@@ -1,5 +1,7 @@
 # zinUtils
 
+Moved to [https://github.com/LemoFire/ntang](https://github.com/LemoFire/ntang)
+
 ## Quickstart
 
 ### Installation
